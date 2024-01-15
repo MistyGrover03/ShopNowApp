@@ -7,14 +7,15 @@ const Hero = () => {
     return (
     <div className='hero'>
         <div className="hero-left">
+            <h2>सुस्वागतम</h2>
             <h2>NEW ARRIVALS ONLY</h2>
             <div>
                 <div className="hero-hand-icon">
-                    <p>new</p>
+                    <p>New</p> 
                     <img src={hand_icon} alt="" />
 
                 </div>
-                <p>collections</p>
+                <p>एथनिक कलेक्शन</p>
                 <p>for everyone</p>
             </div>
             <div className="hero-latest-btn">

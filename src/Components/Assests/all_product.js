@@ -34,7 +34,7 @@ import p33_img from "./product_33.png";
 import p34_img from "./product_34.png";
 import p35_img from "./product_35.png";
 import p36_img from "./product_36.png";
-
+import p37_img from "./picture_37.png";
 let all_product = [
   {
     id: 1,
@@ -321,6 +321,14 @@ let all_product = [
     name: "Boys Orange Colourblocked Hooded Sweatshirt",
     category: "kid",
     image: p36_img,
+    new_price: 85.0,
+    old_price: 120.5,
+  },
+  {
+    id: 37,
+    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    category: "women",
+    image: p37_img,
     new_price: 85.0,
     old_price: 120.5,
   },
