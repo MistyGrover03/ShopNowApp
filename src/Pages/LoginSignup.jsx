@@ -15,7 +15,6 @@ const LoginSignup = () => {
         password,
       });
   
-      // Handle the response as needed (e.g., update state oyr redirect on success).
       console.log(response.data);
     } catch (error) {
       // Handle AxiosError
