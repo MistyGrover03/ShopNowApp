@@ -26,9 +26,9 @@ const ShopCategory = (props) => {
           }
         })}
       </div>
-      <div className="shopcategory-loadmore">
+      <button className="shopcategory-loadmore">
         Explore more
-      </div>
+      </button>
     </div>
   )
 }

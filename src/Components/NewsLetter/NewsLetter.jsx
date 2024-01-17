@@ -8,16 +8,11 @@ const NewsLetter = () => {
   const [successMessage, setSuccessMessage] = useState('');
 
   const handleSubscribe = () => {
-    // Perform your subscription logic here
-    // For demonstration purposes, let's assume a successful subscription
-    // You may replace this with your actual subscription logic
-
-    // Display success message
     setSuccessMessage('You have successfully subscribed!');
   };
 
   const handleEmailChange = (e) => {
-    // Reset success message when the user starts typing in the email input
+   
     setSuccessMessage('');
     setEmail(e.target.value);
   };
