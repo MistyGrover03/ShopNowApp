@@ -6,31 +6,46 @@ const LoginSignup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [agreeChecked, setAgreeChecked] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleSignup = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/signup', {
-        name,
-        email,
-        password,
-      });
-  
-      console.log(response.data);
+      if (!agreeChecked) {
+        // Set an error message if the checkbox is not selected
+        setErrorMessage('Please agree to the terms of use and privacy policy.');
+        return;
+      }
+
+     
+      setErrorMessage('');
+      setSuccessMessage('');
+
+      const response = await axios.post('http://localhost:5000/login', {
+      name,
+      email,
+      password,
+    });
+
+    setSuccessMessage('User created successfully!');
+    console.log(response.data);
     } catch (error) {
-      // Handle AxiosError
-      if (error.isAxiosError) {
-        // Log detailed information about the error
-        console.error('AxiosError:', error);
-        console.error('Response data:', error.response.data);
-        console.error('Response status:', error.response.status);
-        console.error('Response headers:', error.response.headers);
+      if (error.response && error.response.status === 400) {
+        setErrorMessage('User with this email already exists');
       } else {
-        // Log other types of errors
-        console.error('Error:', error.message);
+        setErrorMessage('An error occurred while creating the user.');
       }
     }
   };
   
+  const handleCheckboxChange = (e) => {
+    setAgreeChecked(e.target.checked);
+    // Clear the error message when the checkbox is changed
+    setErrorMessage('');
+  };
+
+
   return (
     <div className='loginsignup'>
       <div className="loginsignup-container">
@@ -40,10 +55,21 @@ const LoginSignup = () => {
           <input type="email" placeholder='Email Address' onChange={(e) => setEmail(e.target.value)} />
           <input type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
         </div>
-        <button onClick={handleSignup}>Continue</button>
+        <button
+          onClick={handleSignup}
+          disabled={!agreeChecked}
+          style={{
+            backgroundColor: agreeChecked ? 'coral' : 'lightgray',
+            cursor: agreeChecked ? 'pointer' : 'not-allowed',
+          }}
+        >
+          Continue
+        </button>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        {successMessage && <p className="success-message">{successMessage}</p>}
         <p className="loginsignup-login">Already have an account? <span>Login here</span></p>
         <div className="loginsignup-agree">
-          <input type="checkbox" name='' id='' />
+          <input type="checkbox" name='' id='' onChange={handleCheckboxChange} />
           <p>By continuing, I agree to the terms of use and privacy policy.</p>
         </div>
       </div>
