@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 import './Offers.css'
 import exclusive_image from '../Assests/exclusive_image.png'
 
